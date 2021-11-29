@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FD_CameraFollow : MonoBehaviour
 {
 
-[SerializeField] Transform target;
-[SerializeField] Vector3 offset;
-[SerializeField] float smoothTime = 0.3f;
-
-Vector3 _velocity = Vector3.zero;
+    [SerializeField] Transform target;
+    [SerializeField] Vector3 offset;
+    [SerializeField] float smoothTime = 0.3f;
+    [SerializeField] Vector3 rotationSpeed = new Vector3(0, 15, 0);
+    
+    Vector3 _velocity = Vector3.zero;
 
 
 
@@ -22,7 +24,17 @@ Vector3 _velocity = Vector3.zero;
 
     // Update is called once per frame
     void LateUpdate(){
+        RotateCamera();
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
+    }
+
+    void RotateCamera(){
+        if (Input.GetKeyDown(KeyCode.E)){
+            transform.Rotate(rotationSpeed);
+        }
+        if (Input.GetKeyDown(KeyCode.Q)){
+            transform.Rotate(-rotationSpeed);
+        }
     }
 }
