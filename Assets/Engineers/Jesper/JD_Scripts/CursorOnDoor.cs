@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CursorOnDoor : MonoBehaviour
 {
-    private bool openable = false;
+    internal bool unOpenable = true;
 
     public Texture2D lockedTexture;
     public Texture2D unLockedTexture;
@@ -19,13 +19,13 @@ public class CursorOnDoor : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (!openable)
-        {
-            Cursor.SetCursor(lockedTexture, new Vector2(), CursorMode.Auto);
-        }
-        if (openable)
+        if (!unOpenable)
         {
             Cursor.SetCursor(unLockedTexture, new Vector2(), CursorMode.Auto);
+        }
+        if (unOpenable)
+        {
+            Cursor.SetCursor(lockedTexture, new Vector2(), CursorMode.Auto);
         }
     }
 
