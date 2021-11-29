@@ -36,5 +36,22 @@ public class FD_CameraFollow : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)){
             transform.Rotate(-rotationSpeed);
         }
+
+        var currentMousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        if (currentMousePosition.x > 0.9f){
+            transform.Rotate(rotationSpeed);
+            //Not Done
+        }
+        if (currentMousePosition.x < 0.1f){
+            transform.Rotate(-rotationSpeed);
+            //Not Done
+        }
+        
+        
+        Debug.Log(currentMousePosition);
+
     }
+    
+    
+    
 }
