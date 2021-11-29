@@ -10,7 +10,7 @@ public class FD_CameraFollow : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset;
     [SerializeField] float smoothTime = 0.3f;
-    [SerializeField] Vector3 rotationSpeed = new Vector3(0, 0, 15);
+    [SerializeField] Vector3 rotationSpeed = new Vector3(0, 15, 0);
     
     Vector3 _velocity = Vector3.zero;
 
