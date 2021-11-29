@@ -4,21 +4,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DoorOpener : MonoBehaviour
+public class CursorOnDoor : MonoBehaviour
 {
     private bool openable = false;
 
     public Texture2D lockedTexture;
     public Texture2D unLockedTexture;
-    
-    // Update is called once per frame
-    void Update()
+    public Texture2D cursor;
+
+    private void Start()
     {
-        while (!openable)
-        {
-            
-        }
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
     }
+
     void OnMouseEnter()
     {
         if (!openable)
@@ -29,5 +27,10 @@ public class DoorOpener : MonoBehaviour
         {
             Cursor.SetCursor(unLockedTexture, new Vector2(), CursorMode.Auto);
         }
+    }
+
+    private void OnMouseExit()
+    {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 }
